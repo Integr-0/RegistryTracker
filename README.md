@@ -9,13 +9,15 @@ Also, automatically loads all entries on boot, so you can easily see all your en
 ### Progress
  - [x] Implement JSON saving and reading
  - [x] Implement the creation Window
- - [ ] Implement Settings
+ - [ ] Implement settings
  - [x] Implement entry list
+ - [x] Implement editing
  - [ ] ...
 
 ### Images
 <img alt="img.png" height="70%" src="img.png" width="70%"/>
 <img alt="Entry Creator" height="70%" src="img_1.png" width="70%"/>
+<img alt="img_2.png" height="70%" src="img_2.png" width="70%"/>
 
 ### Building yourself
 > [!CAUTION]

@@ -14,10 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import currentEditedEntry
 import defaults.accent
 import defaults.colors
 import entries
 import showCreationWindow
+import showEditorWindow
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -49,7 +51,8 @@ fun DefaultWindow() {
                     Row {
                         Button(
                             onClick = {
-                                TODO("Open Editor '${e.title}'")
+                                currentEditedEntry.value = e
+                                showEditorWindow.value = true;
                             },
                             modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp, top = 5.dp, bottom = 5.dp).height(40.dp),
                             shape = RoundedCornerShape(10.dp),

@@ -7,9 +7,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,25 +21,28 @@ import defaults.accent
 import defaults.colors
 import entries
 import resources.Entry
+import resources.delete
 import resources.write
-import showCreationWindow
+import showEditorWindow
 import java.time.LocalDate
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 @Preview
-fun EntryCreationWindow() {
-    var title by remember { mutableStateOf("") }
+fun EntryEditorWindow(entry: Entry) {
+    var title by remember { mutableStateOf(entry.title) }
 
-    var day by remember { mutableStateOf("") }
-    var month by remember { mutableStateOf("") }
-    var year by remember { mutableStateOf("") }
+    val dates = entry.date.split(".")
 
-    var content by remember { mutableStateOf("") }
+    var day by remember { mutableStateOf(dates[0]) }
+    var month by remember { mutableStateOf(dates[1]) }
+    var year by remember { mutableStateOf(dates[2]) }
+
+    var content by remember { mutableStateOf(entry.content) }
 
     val numPattern = remember { Regex("^\\d+\$") }
 
-    var access by remember { mutableStateOf("Public") }
+    var access by remember { mutableStateOf(entry.access) }
 
     MaterialTheme(colors = colors) {
         Column {
@@ -176,23 +180,32 @@ fun EntryCreationWindow() {
             Row {
                 Button(
                     onClick = {
-                        if (title.isNotEmpty()) {
-                            val entry = Entry()
-                                .setTitle(title)
-                                .setAccess(access)
-                                .setContent(content)
-                                .setDate(day, month, year)
-                                .setCreatedVals()
-                                .write()
-                            entries += entry
-                            showCreationWindow.value = false
-                        }
+                        entry
+                            .setTitle(title)
+                            .setAccess(access)
+                            .setContent(content)
+                            .setDate(day, month, year)
+                            .write()
+                        showEditorWindow.value = false
                     },
-                    modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                    modifier = Modifier.padding(10.dp),
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = accent)
                 ) {
-                    Icon(Icons.Default.Add, "Add", tint = Color.White)
+                    Icon(Icons.Default.Check, "Save", tint = Color.White)
+                }
+
+                Button(
+                    onClick = {
+                        entries -= entry
+                        entry.delete()
+                        showEditorWindow.value = false
+                    },
+                    modifier = Modifier.padding(10.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Gray)
+                ) {
+                    Icon(Icons.Default.Delete, "Delete", tint = Color.White)
                 }
             }
         }

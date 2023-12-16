@@ -2,8 +2,6 @@ package resources
 
 import java.nio.file.FileAlreadyExistsException
 import java.nio.file.Files
-import java.time.LocalDate
-import java.time.LocalTime
 import kotlin.io.path.Path
 import kotlin.io.path.listDirectoryEntries
 
@@ -18,17 +16,32 @@ fun init(): List<Entry> {
     return loadAll()
 }
 
+fun Entry.delete() {
+    Files.delete(
+        Path(
+            "./entries/saves/${
+                this.cDate.dayOfMonth.toString()
+                        + "-" + this.cDate.monthValue.toString()
+                        + "-" + this.cDate.year.toString()
+                        + "-" + this.cTime.second.toString()
+                        + "-" + this.cTime.minute.toString()
+                        + "-" + this.cTime.hour.toString()
+            }.json"
+        )
+    )
+}
+
 fun Entry.write(): Entry {
     val json = this.toJSON()
     Files.write(
         Path(
             "./entries/saves/${
-                LocalDate.now().dayOfMonth.toString()
-                        + "-" + LocalDate.now().monthValue.toString()
-                        + "-" + LocalDate.now().year.toString()
-                        + "-" + LocalTime.now().second.toString()
-                        + "-" + LocalTime.now().minute.toString()
-                        + "-" + LocalTime.now().hour.toString()
+                this.cDate.dayOfMonth.toString()
+                        + "-" + this.cDate.monthValue.toString()
+                        + "-" + this.cDate.year.toString()
+                        + "-" + this.cTime.second.toString()
+                        + "-" + this.cTime.minute.toString()
+                        + "-" + this.cTime.hour.toString()
             }.json"
         ),
         json.toByteArray()
