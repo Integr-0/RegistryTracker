@@ -10,11 +10,11 @@ Also, automatically loads all entries on boot, so you can easily see all your en
  - [x] Implement JSON saving and reading
  - [x] Implement the creation Window
  - [ ] Implement Settings
- - [ ] Implement entry list
+ - [x] Implement entry list
  - [ ] ...
 
 ### Images
-<img alt="Main UI" height="70%" src="img.png" width="70%"/>
+<img alt="img.png" height="70%" src="img.png" width="70%"/>
 <img alt="Entry Creator" height="70%" src="img_1.png" width="70%"/>
 
 ### Building yourself

@@ -3,6 +3,8 @@ package defaults
 import androidx.compose.material.Colors
 import androidx.compose.ui.graphics.Color
 
+val accent = Color(76, 158, 152)
+
 var colors = Colors(
     isLight = false,
 

@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.unit.dp
+import defaults.accent
 import defaults.colors
 import entries
 import resources.Entry
@@ -50,8 +51,8 @@ fun EntryCreationWindow() {
                     modifier = Modifier.padding(10.dp).fillMaxWidth(),
                     singleLine = true,
                     colors = TextFieldDefaults.textFieldColors(
-                        focusedLabelColor = Color(76, 158, 152),
-                        focusedIndicatorColor = Color(76, 158, 152)
+                        focusedLabelColor = accent,
+                        focusedIndicatorColor = accent
                     )
                 )
             }
@@ -71,8 +72,8 @@ fun EntryCreationWindow() {
                                 .clickable { day = LocalDate.now().dayOfMonth.toString() })
                     },
                     colors = TextFieldDefaults.textFieldColors(
-                        focusedLabelColor = Color(76, 158, 152),
-                        focusedIndicatorColor = Color(76, 158, 152)
+                        focusedLabelColor = accent,
+                        focusedIndicatorColor = accent
                     )
                 )
 
@@ -90,8 +91,8 @@ fun EntryCreationWindow() {
                                 .clickable { month = LocalDate.now().monthValue.toString() })
                     },
                     colors = TextFieldDefaults.textFieldColors(
-                        focusedLabelColor = Color(76, 158, 152),
-                        focusedIndicatorColor = Color(76, 158, 152)
+                        focusedLabelColor = accent,
+                        focusedIndicatorColor = accent
                     )
                 )
 
@@ -109,8 +110,8 @@ fun EntryCreationWindow() {
                                 .clickable { year = LocalDate.now().year.toString() })
                     },
                     colors = TextFieldDefaults.textFieldColors(
-                        focusedLabelColor = Color(76, 158, 152),
-                        focusedIndicatorColor = Color(76, 158, 152)
+                        focusedLabelColor = accent,
+                        focusedIndicatorColor = accent
                     )
                 )
             }
@@ -121,9 +122,9 @@ fun EntryCreationWindow() {
                     onClick = { access = "Public" },
                     content = { Text("Public") },
                     modifier = Modifier.padding(10.dp),
-                    border = BorderStroke(1.dp, color = if (access == "Public") Color(76, 158, 152) else Color.Gray),
-                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = Color(76, 158, 152)) },
-                    colors = ChipDefaults.filterChipColors(selectedContentColor = Color(76, 158, 152))
+                    border = BorderStroke(1.dp, color = if (access == "Public") accent else Color.Gray),
+                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = accent) },
+                    colors = ChipDefaults.filterChipColors(selectedContentColor = accent)
                 )
                 FilterChip(
                     access == "Restricted",
@@ -132,28 +133,28 @@ fun EntryCreationWindow() {
                     modifier = Modifier.padding(10.dp),
                     border = BorderStroke(
                         1.dp,
-                        color = if (access == "Restricted") Color(76, 158, 152) else Color.Gray
+                        color = if (access == "Restricted") accent else Color.Gray
                     ),
-                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = Color(76, 158, 152)) },
-                    colors = ChipDefaults.filterChipColors(selectedContentColor = Color(76, 158, 152))
+                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = accent) },
+                    colors = ChipDefaults.filterChipColors(selectedContentColor = accent)
                 )
                 FilterChip(
                     access == "Private",
                     onClick = { access = "Private" },
                     content = { Text("Private") },
                     modifier = Modifier.padding(10.dp),
-                    border = BorderStroke(1.dp, color = if (access == "Private") Color(76, 158, 152) else Color.Gray),
-                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = Color(76, 158, 152)) },
-                    colors = ChipDefaults.filterChipColors(selectedContentColor = Color(76, 158, 152))
+                    border = BorderStroke(1.dp, color = if (access == "Private") accent else Color.Gray),
+                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = accent) },
+                    colors = ChipDefaults.filterChipColors(selectedContentColor = accent)
                 )
                 FilterChip(
                     access == "Secret",
                     onClick = { access = "Secret" },
                     content = { Text("Secret") },
                     modifier = Modifier.padding(10.dp),
-                    border = BorderStroke(1.dp, color = if (access == "Secret") Color(76, 158, 152) else Color.Gray),
-                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = Color(76, 158, 152)) },
-                    colors = ChipDefaults.filterChipColors(selectedContentColor = Color(76, 158, 152))
+                    border = BorderStroke(1.dp, color = if (access == "Secret") accent else Color.Gray),
+                    selectedIcon = { Icon(Icons.Default.CheckCircle, "Selected", tint = accent) },
+                    colors = ChipDefaults.filterChipColors(selectedContentColor = accent)
                 )
             }
 
@@ -166,8 +167,8 @@ fun EntryCreationWindow() {
                     modifier = Modifier.padding(10.dp).fillMaxWidth().height(240.dp),
                     singleLine = false,
                     colors = TextFieldDefaults.textFieldColors(
-                        focusedLabelColor = Color(76, 158, 152),
-                        focusedIndicatorColor = Color(76, 158, 152)
+                        focusedLabelColor = accent,
+                        focusedIndicatorColor = accent
                     )
                 )
             }
@@ -186,7 +187,7 @@ fun EntryCreationWindow() {
                     },
                     modifier = Modifier.padding(10.dp).fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color(76, 158, 152))
+                    colors = ButtonDefaults.buttonColors(backgroundColor = accent)
                 ) {
                     Icon(Icons.Default.Add, "Add", tint = Color.White)
                 }
