@@ -5,12 +5,14 @@ import java.nio.file.Files
 import kotlin.io.path.Path
 import kotlin.io.path.listDirectoryEntries
 
+val parent: String = "${System.getProperty("user.home")}/AppData/Roaming/RegistryTracker"
+
 fun init(): List<Entry> {
     try {
-        Files.createDirectory(Path("./entries/saves"))
-        println("Directory created: '${Path("./entries/saves")}'")
+        Files.createDirectories(Path("$parent/entries/saves"))
+        println("Directory created: '${Path("$parent/entries/saves")}'")
     } catch (ex: FileAlreadyExistsException) {
-        println("Directory already exists: '${Path("./entries/saves")}'")
+        println("Directory already exists: '${Path("$parent/entries/saves")}'")
     }
 
     return loadAll()
@@ -19,7 +21,7 @@ fun init(): List<Entry> {
 fun Entry.delete() {
     Files.delete(
         Path(
-            "./entries/saves/${
+            "$parent/entries/saves/${
                 this.cDate.dayOfMonth.toString()
                         + "-" + this.cDate.monthValue.toString()
                         + "-" + this.cDate.year.toString()
@@ -35,7 +37,7 @@ fun Entry.write(): Entry {
     val json = this.toJSON()
     Files.write(
         Path(
-            "./entries/saves/${
+            "$parent/entries/saves/${
                 this.cDate.dayOfMonth.toString()
                         + "-" + this.cDate.monthValue.toString()
                         + "-" + this.cDate.year.toString()
@@ -56,7 +58,7 @@ fun read(path: String): Entry {
 }
 
 fun loadAll(): List<Entry> {
-    val entries = Path("./entries/saves").listDirectoryEntries()
+    val entries = Path("$parent/entries/saves").listDirectoryEntries()
     val allEntries: MutableList<Entry> = mutableListOf()
 
     for (e in entries) {

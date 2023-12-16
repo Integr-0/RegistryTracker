@@ -30,8 +30,15 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+
             packageName = "RegistryTracker"
             packageVersion = "1.0.0"
+
+            windows {
+                menu = true
+                dirChooser = true
+                iconFile = File("src/main/resources/Tracker.ico")
+            }
         }
     }
 }
