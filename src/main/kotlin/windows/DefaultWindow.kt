@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
@@ -19,7 +20,7 @@ import showCreationWindow
 
 @Composable
 @Preview
-fun defaultWindow() {
+fun DefaultWindow() {
     MaterialTheme(colors = colors) {
         Row {
             Button(
@@ -27,13 +28,14 @@ fun defaultWindow() {
                     showCreationWindow.value = true
                 },
                 modifier = Modifier.padding(10.dp),
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color(76, 158, 152))
             ) {
                 Icon(Icons.Default.Add, "New Entry", tint = Color.White)
             }
 
             Button(onClick = {
-
+                TODO("Hold on tight!")
             }, modifier = Modifier.padding(10.dp), shape = RoundedCornerShape(10.dp)) {
                 Icon(Icons.Default.Settings, "New Entry", tint = Color.White)
             }

@@ -21,6 +21,7 @@ dependencies {
     // With compose.desktop.common you will also lose @Preview functionality
     implementation(compose.desktop.currentOs)
     testImplementation(kotlin("test"))
+    implementation("com.google.code.gson:gson:2.10.1")
 }
 
 compose.desktop {
