@@ -1,19 +1,15 @@
 package resources
 
-import java.nio.file.FileAlreadyExistsException
+import net.harawata.appdirs.AppDirsFactory
 import java.nio.file.Files
 import kotlin.io.path.Path
 import kotlin.io.path.listDirectoryEntries
 
-val parent: String = "${System.getProperty("user.home")}/AppData/Roaming/RegistryTracker"
+val parent: String = AppDirsFactory.getInstance().getUserDataDir("MainDir", "", "RegistryTracker")
 
 fun init(): List<Entry> {
-    try {
-        Files.createDirectories(Path("$parent/entries/saves"))
-        println("Directory created: '${Path("$parent/entries/saves")}'")
-    } catch (ex: FileAlreadyExistsException) {
-        println("Directory already exists: '${Path("$parent/entries/saves")}'")
-    }
+    Files.createDirectories(Path("$settingsParent/entries/saves"))
+    println("Directory created: '${Path("$settingsParent/entries/saves")}'")
 
     return loadAll()
 }
@@ -21,7 +17,7 @@ fun init(): List<Entry> {
 fun Entry.delete() {
     Files.delete(
         Path(
-            "$parent/entries/saves/${
+            "$settingsParent/entries/saves/${
                 this.cDate.dayOfMonth.toString()
                         + "-" + this.cDate.monthValue.toString()
                         + "-" + this.cDate.year.toString()
@@ -37,7 +33,7 @@ fun Entry.write(): Entry {
     val json = this.toJSON()
     Files.write(
         Path(
-            "$parent/entries/saves/${
+            "$settingsParent/entries/saves/${
                 this.cDate.dayOfMonth.toString()
                         + "-" + this.cDate.monthValue.toString()
                         + "-" + this.cDate.year.toString()
@@ -58,7 +54,7 @@ fun read(path: String): Entry {
 }
 
 fun loadAll(): List<Entry> {
-    val entries = Path("$parent/entries/saves").listDirectoryEntries()
+    val entries = Path("$settingsParent/entries/saves").listDirectoryEntries()
     val allEntries: MutableList<Entry> = mutableListOf()
 
     for (e in entries) {

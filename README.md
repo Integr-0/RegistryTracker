@@ -9,15 +9,16 @@ Also, automatically loads all entries on boot, so you can easily see all your en
 ### Progress
  - [x] Implement JSON saving and reading
  - [x] Implement the creation Window
- - [ ] Implement settings
+ - [x] Implement settings
  - [x] Implement entry list
  - [x] Implement editing
- - [ ] ...
+ - [x] Implement Installer
 
 ### Images
 <img alt="img.png" height="70%" src="img.png" width="70%"/>
 <img alt="Entry Creator" height="70%" src="img_1.png" width="70%"/>
 <img alt="img_2.png" height="70%" src="img_2.png" width="70%"/>
+<img alt="img_3.png" height="70%" src="img_3.png" width="70%"/>
 
 ### Building yourself
 > [!CAUTION]
@@ -34,3 +35,4 @@ The created file can by default be found under `.\build\compose\binaries\main\<y
 - Compose for Desktop - UI framework
 - Google GSON - Parsing JSON files
 - Gradle - Build tool
+- AppDirs by Harawata - Dynamic app directories

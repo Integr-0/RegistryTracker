@@ -30,7 +30,7 @@ class LocalDateAdapter : TypeAdapter<LocalDate?>() {
             writer.nullValue()
             return
         }
-        val xy: String = value.dayOfMonth.toString()+"-"+value.monthValue.toString()+"-"+value.year.toString()
+        val xy: String = value.dayOfMonth.toString() + "-" + value.monthValue.toString() + "-" + value.year.toString()
         writer.value(xy)
     }
 }
@@ -56,7 +56,7 @@ class LocalTimeAdapter : TypeAdapter<LocalTime?>() {
             writer.nullValue()
             return
         }
-        val xy: String = value.second.toString()+"-"+value.minute.toString()+"-"+value.hour.toString()
+        val xy: String = value.second.toString() + "-" + value.minute.toString() + "-" + value.hour.toString()
         writer.value(xy)
     }
 }
