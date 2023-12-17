@@ -36,3 +36,8 @@ The created file can by default be found under `.\build\compose\binaries\main\<y
 - Google GSON - Parsing JSON files
 - Gradle - Build tool
 - AppDirs by Harawata - Dynamic app directories
+
+### Availability
+- [x] Windows [Tested]
+- [x] Linux [Not Tested]
+- [ ] MacOS [Not Tested]
